@@ -1,7 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "deliveroo"
+    "name": "delivery-clone-app"
   },
   "api": {
     "projectId": "olil4dv7",

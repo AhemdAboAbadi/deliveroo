@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "deliveroo",
-    "slug": "deliveroo",
+    "name": "delivery-app",
+    "owner": "diegotle",
+    "slug": "delivery-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

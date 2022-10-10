@@ -3,25 +3,27 @@ export default {
   title: 'Dish',
   type: 'document',
   fields: [
-    { 
+    {
       name: 'name',
       type: 'string',
-      title: 'Dish Name',
+      title: 'Name of dish',
       validation: (Rule) => Rule.required(),
-    },{
+    },
+    {
       name: 'short_description',
       type: 'string',
-      title: 'Short Description',
+      title: 'Short description',
       validation: (Rule) => Rule.max(200),
-    
-    },{
+    },
+    {
+      name: 'price',
+      type: 'number',
+      title: 'Price of the dish in USD',
+    },
+    {
       name: 'image',
       type: 'image',
       title: 'Image of the Dish',
-    },{
-      name: 'price',
-      type: 'number',
-      title: 'Price of the Dish in USD',
-    }
-  ]
-}
+    },
+  ],
+};
