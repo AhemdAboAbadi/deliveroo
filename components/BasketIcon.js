@@ -22,7 +22,7 @@ const BasketIcon = () => {
         <Text
           className="flex-1 text-white font-extrabold text-lg text-center">View Basket</Text>
         <Text className="text-lg text-white font-extrabold">
-          {basketTotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+          $ {basketTotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
         </Text>
       </TouchableOpacity>
     </View>
