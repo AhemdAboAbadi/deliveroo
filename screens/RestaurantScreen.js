@@ -1,23 +1,53 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
-import React, { useLayoutEffect } from 'react';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { urlFor } from '../sanity';
+import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import React, { useEffect, useLayoutEffect } from "react";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { urlFor } from "../sanity";
 import {
   ArrowLeftIcon,
   ChevronRightIcon,
   MapPinIcon,
   StarIcon,
-} from 'react-native-heroicons/solid';
-import { QuestionMarkCircleIcon } from 'react-native-heroicons/outline';
-import DishRow from '../components/DishRow';
-import BasketIcon from '../components/BasketIcon';
+} from "react-native-heroicons/solid";
+import { QuestionMarkCircleIcon } from "react-native-heroicons/outline";
+import DishRow from "../components/DishRow";
+import BasketIcon from "../components/BasketIcon";
+import { useDispatch } from "react-redux";
+import { setRestaurant } from "../features/restaurantSlice";
 
 const RestaurantScreen = () => {
   const navigation = useNavigation();
-
+  const dispatch = useDispatch();
   const {
-    params: { id, imgUrl, title, rating, genre, address, short_description, dishes, long, lat },
+    params: {
+      id,
+      imgUrl,
+      title,
+      rating,
+      genre,
+      address,
+      short_description,
+      dishes,
+      long,
+      lat,
+    },
   } = useRoute();
+
+  useEffect(() => {
+    dispatch(
+      setRestaurant({
+        id,
+        imgUrl,
+        title,
+        rating,
+        genre,
+        address,
+        short_description,
+        dishes,
+        long,
+        lat,
+      })
+    );
+  }, [dispatch]);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -30,7 +60,10 @@ const RestaurantScreen = () => {
       <BasketIcon />
       <ScrollView>
         <View className="relative">
-          <Image source={{ uri: urlFor(imgUrl).url() }} className="w-full h-56 bg-gray-300 p-4" />
+          <Image
+            source={{ uri: urlFor(imgUrl).url() }}
+            className="w-full h-56 bg-gray-300 p-4"
+          />
           <TouchableOpacity
             onPress={navigation.goBack}
             className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full"
@@ -62,7 +95,9 @@ const RestaurantScreen = () => {
 
           <TouchableOpacity className="flex-row items-center space-x-2 p-4 border-y border-gray-300">
             <QuestionMarkCircleIcon color="gray" opacity={0.6} size={20} />
-            <Text className="pl-2 flex-1 text-md font-bold">Have a food allergy?</Text>
+            <Text className="pl-2 flex-1 text-md font-bold">
+              Have a food allergy?
+            </Text>
             <ChevronRightIcon color="#00CCBB" />
           </TouchableOpacity>
         </View>
